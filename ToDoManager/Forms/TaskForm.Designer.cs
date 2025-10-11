@@ -69,7 +69,7 @@
             DateTextBox.BackColor = Color.FromArgb(90, 40, 216);
             DateTextBox.Location = new Point(616, 18);
             DateTextBox.Name = "DateTextBox";
-            DateTextBox.PlaceholderText = "DD.MM.YYYY";
+            DateTextBox.PlaceholderText = "DD/MM/YYYY";
             DateTextBox.Size = new Size(144, 31);
             DateTextBox.TabIndex = 3;
             // 
