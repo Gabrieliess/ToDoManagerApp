@@ -1,3 +1,5 @@
+using ToDoManager.Forms;
+
 namespace ToDoManager
 {
     enum Months
@@ -63,6 +65,14 @@ namespace ToDoManager
             if (sender is Button btn)
             {
                 btn.BackColor = AppColors.MenuButton;
+            }
+        }
+
+        private void NewTaskBtn_Click(object sender, EventArgs e)
+        {
+            using (TaskForm taskForm = new TaskForm())
+            {
+                taskForm.ShowDialog();
             }
         }
     }

@@ -43,7 +43,7 @@
             HeadingPanel.Controls.Add(Datelabel);
             HeadingPanel.Dock = DockStyle.Top;
             HeadingPanel.Location = new Point(0, 0);
-            HeadingPanel.Margin = new Padding(3, 2, 3, 2);
+            HeadingPanel.Margin = new Padding(0);
             HeadingPanel.Name = "HeadingPanel";
             HeadingPanel.Size = new Size(1062, 78);
             HeadingPanel.TabIndex = 0;
@@ -100,6 +100,7 @@
             NewTaskBtn.TabIndex = 0;
             NewTaskBtn.Text = "New Task";
             NewTaskBtn.UseVisualStyleBackColor = true;
+            NewTaskBtn.Click += NewTaskBtn_Click;
             NewTaskBtn.MouseEnter += MenuButton_MouseEnter;
             NewTaskBtn.MouseLeave += MenuButton_MouseLeave;
             // 
