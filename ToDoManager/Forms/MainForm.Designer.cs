@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             HeadingPanel = new Panel();
-            MenuPanel = new Panel();
             Datelabel = new Label();
+            MenuPanel = new Panel();
+            RemoveTaskBtn = new Button();
+            NewTaskBtn = new Button();
             HeadingPanel.SuspendLayout();
+            MenuPanel.SuspendLayout();
             SuspendLayout();
             // 
             // HeadingPanel
@@ -45,9 +48,22 @@
             HeadingPanel.Size = new Size(1133, 78);
             HeadingPanel.TabIndex = 0;
             // 
+            // Datelabel
+            // 
+            Datelabel.AutoSize = true;
+            Datelabel.ForeColor = SystemColors.HighlightText;
+            Datelabel.Location = new Point(12, 24);
+            Datelabel.Name = "Datelabel";
+            Datelabel.Size = new Size(389, 33);
+            Datelabel.TabIndex = 0;
+            Datelabel.Text = "11th of September 2001";
+            Datelabel.Click += DateLabel_Click;
+            // 
             // MenuPanel
             // 
-            MenuPanel.BackColor = Color.FromArgb(64, 34, 135);
+            MenuPanel.BackColor = Color.Indigo;
+            MenuPanel.Controls.Add(RemoveTaskBtn);
+            MenuPanel.Controls.Add(NewTaskBtn);
             MenuPanel.Dock = DockStyle.Left;
             MenuPanel.Location = new Point(0, 78);
             MenuPanel.Margin = new Padding(0);
@@ -55,15 +71,37 @@
             MenuPanel.Size = new Size(170, 574);
             MenuPanel.TabIndex = 1;
             // 
-            // Datelabel
+            // RemoveTaskBtn
             // 
-            Datelabel.AutoSize = true;
-            Datelabel.ForeColor = SystemColors.HighlightText;
-            Datelabel.Location = new Point(16, 13);
-            Datelabel.Name = "Datelabel";
-            Datelabel.Size = new Size(168, 33);
-            Datelabel.TabIndex = 0;
-            Datelabel.Text = "Datelabel";
+            RemoveTaskBtn.FlatAppearance.BorderSize = 0;
+            RemoveTaskBtn.FlatStyle = FlatStyle.Flat;
+            RemoveTaskBtn.Font = new Font("DejaVu Sans Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            RemoveTaskBtn.ForeColor = SystemColors.HighlightText;
+            RemoveTaskBtn.Location = new Point(0, 60);
+            RemoveTaskBtn.Margin = new Padding(0);
+            RemoveTaskBtn.Name = "RemoveTaskBtn";
+            RemoveTaskBtn.Size = new Size(170, 60);
+            RemoveTaskBtn.TabIndex = 1;
+            RemoveTaskBtn.Text = "Remove Task";
+            RemoveTaskBtn.UseVisualStyleBackColor = true;
+            RemoveTaskBtn.MouseEnter += MenuButton_MouseEnter;
+            RemoveTaskBtn.MouseLeave += MenuButton_MouseLeave;
+            // 
+            // NewTaskBtn
+            // 
+            NewTaskBtn.FlatAppearance.BorderSize = 0;
+            NewTaskBtn.FlatStyle = FlatStyle.Flat;
+            NewTaskBtn.Font = new Font("DejaVu Sans Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            NewTaskBtn.ForeColor = SystemColors.HighlightText;
+            NewTaskBtn.Location = new Point(0, 0);
+            NewTaskBtn.Margin = new Padding(0);
+            NewTaskBtn.Name = "NewTaskBtn";
+            NewTaskBtn.Size = new Size(170, 60);
+            NewTaskBtn.TabIndex = 0;
+            NewTaskBtn.Text = "New Task";
+            NewTaskBtn.UseVisualStyleBackColor = true;
+            NewTaskBtn.MouseEnter += MenuButton_MouseEnter;
+            NewTaskBtn.MouseLeave += MenuButton_MouseLeave;
             // 
             // MainForm
             // 
@@ -80,6 +118,7 @@
             Load += MainForm_Load;
             HeadingPanel.ResumeLayout(false);
             HeadingPanel.PerformLayout();
+            MenuPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -88,5 +127,7 @@
         private Panel HeadingPanel;
         private Panel MenuPanel;
         private Label Datelabel;
+        private Button NewTaskBtn;
+        private Button RemoveTaskBtn;
     }
 }
