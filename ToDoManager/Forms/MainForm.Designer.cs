@@ -45,7 +45,7 @@
             HeadingPanel.Location = new Point(0, 0);
             HeadingPanel.Margin = new Padding(3, 2, 3, 2);
             HeadingPanel.Name = "HeadingPanel";
-            HeadingPanel.Size = new Size(1133, 78);
+            HeadingPanel.Size = new Size(1062, 78);
             HeadingPanel.TabIndex = 0;
             // 
             // Datelabel
@@ -68,7 +68,7 @@
             MenuPanel.Location = new Point(0, 78);
             MenuPanel.Margin = new Padding(0);
             MenuPanel.Name = "MenuPanel";
-            MenuPanel.Size = new Size(170, 574);
+            MenuPanel.Size = new Size(170, 595);
             MenuPanel.TabIndex = 1;
             // 
             // RemoveTaskBtn
@@ -108,11 +108,12 @@
             AutoScaleDimensions = new SizeF(16F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 7, 28);
-            ClientSize = new Size(1133, 652);
+            ClientSize = new Size(1062, 673);
             Controls.Add(MenuPanel);
             Controls.Add(HeadingPanel);
             Font = new Font("DejaVu Sans Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 238);
             Margin = new Padding(7, 5, 7, 5);
+            MinimumSize = new Size(1080, 720);
             Name = "MainForm";
             Text = "MainForm";
             Load += MainForm_Load;
