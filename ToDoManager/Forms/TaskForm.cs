@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using ToDoManager.Models;
+using ToDoManager.Services;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ToDoManager.Forms
@@ -39,6 +40,10 @@ namespace ToDoManager.Forms
 
         private void AddTaskBtn_Click(object sender, EventArgs e)
         {
+            //
+            // data validation
+            //
+
             if (string.IsNullOrWhiteSpace(TitleTextBox.Text) || string.IsNullOrWhiteSpace(DateTextBox.Text))
             {
                 MessageBox.Show(@"Title and Date are required.");
@@ -52,6 +57,7 @@ namespace ToDoManager.Forms
             }
 
             int counter = 0;
+
             foreach (string variable in DateTextBox.Text.Split('/'))
             {
                 if (Int32.TryParse(variable, out _) == false)
@@ -88,7 +94,7 @@ namespace ToDoManager.Forms
                 counter++;
             }
 
-            TaskItem newTask = new TaskItem
+            TaskItem taskItem = new TaskItem
             {
                 Title = TitleTextBox.Text,
                 DueDate = DateOnly.Parse(DateTextBox.Text.Replace('.', '/')), // 12/4/2015
@@ -104,7 +110,7 @@ namespace ToDoManager.Forms
                 IsDone = false,
                 Note = NoteTextBox.Text
             };
-            Console.WriteLine(newTask.DueDate);
+            TaskStorage.SaveTask(taskItem);
             Close();
         }
     }
