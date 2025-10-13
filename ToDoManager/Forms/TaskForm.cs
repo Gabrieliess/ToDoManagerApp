@@ -24,19 +24,9 @@ namespace ToDoManager.Forms
 
         private void TaskForm_Load(object sender, EventArgs e)
         {
+            Console.WriteLine(@"TaskForm loaded.");
         }
 
-        private void TitleTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
 
         private void AddTaskBtn_Click(object sender, EventArgs e)
         {

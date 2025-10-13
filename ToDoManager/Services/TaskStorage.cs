@@ -15,19 +15,15 @@ namespace ToDoManager.Services
             "tasks.json"
         );
 
-        // Uloží jednu úlohu, ale zachová ostatné
         public static void SaveTask(TaskItem newTask)
         {
             try
             {
-                // 1️⃣ Zabezpeč, že priečinok existuje
                 Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
 
-                // 2️⃣ Načítaj existujúce úlohy
                 var tasks = LoadTasks();
                 tasks.Add(newTask);
 
-                // 3️⃣ Serializuj a zapíš
                 string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions
                 {
                     WriteIndented = true
@@ -41,14 +37,13 @@ namespace ToDoManager.Services
             }
         }
 
-        // Načíta všetky úlohy
         public static List<TaskItem> LoadTasks()
         {
             try
             {
                 if (!File.Exists(FilePath))
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
+                    Directory.CreateDirectory(Path.GetDirectoryName(FilePath) ?? string.Empty);
                     File.WriteAllText(FilePath, "[]");
                     return new List<TaskItem>();
                 }
@@ -58,7 +53,7 @@ namespace ToDoManager.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Chyba pri načítaní: {ex.Message}");
+                MessageBox.Show(@$"Err while loading tasks: {ex.Message}");
                 return new List<TaskItem>();
             }
         }

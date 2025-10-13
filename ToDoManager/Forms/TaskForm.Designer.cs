@@ -105,7 +105,6 @@
             TitleTextBox.PlaceholderText = "Enter task title...";
             TitleTextBox.Size = new Size(365, 32);
             TitleTextBox.TabIndex = 0;
-            TitleTextBox.TextChanged += TitleTextBox_TextChanged;
             // 
             // LeftPanel
             // 
@@ -203,7 +202,6 @@
             label2.Size = new Size(134, 28);
             label2.TabIndex = 3;
             label2.Text = "Armageddon";
-            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -224,7 +222,6 @@
             PriorityTrackBar.Orientation = Orientation.Vertical;
             PriorityTrackBar.Size = new Size(56, 196);
             PriorityTrackBar.TabIndex = 1;
-            PriorityTrackBar.Scroll += trackBar1_Scroll;
             // 
             // NoteTextBox
             // 

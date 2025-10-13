@@ -33,6 +33,11 @@
             MenuPanel = new Panel();
             RemoveTaskBtn = new Button();
             NewTaskBtn = new Button();
+            TasklistView = new ListView();
+            TitleColumn = new ColumnHeader();
+            DueDateColumn = new ColumnHeader();
+            NoteColumn = new ColumnHeader();
+            PriorityColumn = new ColumnHeader();
             HeadingPanel.SuspendLayout();
             MenuPanel.SuspendLayout();
             SuspendLayout();
@@ -104,12 +109,49 @@
             NewTaskBtn.MouseEnter += MenuButton_MouseEnter;
             NewTaskBtn.MouseLeave += MenuButton_MouseLeave;
             // 
+            // TasklistView
+            // 
+            TasklistView.Columns.AddRange(new ColumnHeader[] { TitleColumn, DueDateColumn, NoteColumn, PriorityColumn });
+            TasklistView.Dock = DockStyle.Bottom;
+            TasklistView.Font = new Font("DejaVu Sans Mono", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            TasklistView.ForeColor = SystemColors.Window;
+            TasklistView.FullRowSelect = true;
+            TasklistView.GridLines = true;
+            TasklistView.Location = new Point(170, 78);
+            TasklistView.Margin = new Padding(0);
+            TasklistView.Name = "TasklistView";
+            TasklistView.Size = new Size(892, 595);
+            TasklistView.TabIndex = 2;
+            TasklistView.UseCompatibleStateImageBehavior = false;
+            TasklistView.View = View.Details;
+            // 
+            // TitleColumn
+            // 
+            TitleColumn.Text = "Title";
+            TitleColumn.Width = 180;
+            // 
+            // DueDateColumn
+            // 
+            DueDateColumn.Text = "Due Date";
+            DueDateColumn.Width = 120;
+            // 
+            // NoteColumn
+            // 
+            NoteColumn.Text = "Note";
+            NoteColumn.Width = 500;
+            // 
+            // PriorityColumn
+            // 
+            PriorityColumn.Text = "Priority";
+            PriorityColumn.Width = 92;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(16F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(20, 7, 28);
             ClientSize = new Size(1062, 673);
+            Controls.Add(TasklistView);
             Controls.Add(MenuPanel);
             Controls.Add(HeadingPanel);
             Font = new Font("DejaVu Sans Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 238);
@@ -131,5 +173,10 @@
         private Label Datelabel;
         private Button NewTaskBtn;
         private Button RemoveTaskBtn;
+        private ListView TasklistView;
+        private ColumnHeader TitleColumn;
+        private ColumnHeader DueDateColumn;
+        private ColumnHeader NoteColumn;
+        private ColumnHeader PriorityColumn;
     }
 }
