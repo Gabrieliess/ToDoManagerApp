@@ -34,8 +34,7 @@ namespace ToDoManager
             Datelabel.Text = ConstructDate();
             foreach (var task in TaskStorage.LoadTasks())
             {
-                ListViewItem item = new ListViewItem();
-                item.SubItems.Add(task.Title);
+                ListViewItem item = new ListViewItem(task.Title);
                 item.SubItems.Add(task.DueDate.ToString());
                 item.SubItems.Add(task.Note);
                 item.SubItems.Add(task.Priority);
