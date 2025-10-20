@@ -1,4 +1,5 @@
 using ToDoManager.Forms;
+using ToDoManager.Services;
 
 namespace ToDoManager
 {
@@ -28,6 +29,20 @@ namespace ToDoManager
             InitializeComponent();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            Datelabel.Text = ConstructDate();
+            foreach (var task in TaskStorage.LoadTasks())
+            {
+                ListViewItem item = new ListViewItem();
+                item.SubItems.Add(task.Title);
+                item.SubItems.Add(task.DueDate.ToString());
+                item.SubItems.Add(task.Note);
+                item.SubItems.Add(task.Priority);
+                TasklistView.Items.Add(item);
+            }
+        }
+
         private string ConstructDate()
         {
             if (!dateFormatWord)
@@ -38,11 +53,6 @@ namespace ToDoManager
             {
                 return $@"{DateTime.Now.Day}th of {((Months)DateTime.Now.Month - 1).ToString()} {DateTime.Now.Year}";
             }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            Datelabel.Text = ConstructDate();
         }
 
 
@@ -76,6 +86,7 @@ namespace ToDoManager
             }
         }
     }
+
     public static class AppColors
     {
         public static readonly Color Heading = Color.FromArgb(90, 40, 216);

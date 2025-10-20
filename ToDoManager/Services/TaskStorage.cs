@@ -43,7 +43,7 @@ namespace ToDoManager.Services
             {
                 if (!File.Exists(FilePath))
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(FilePath) ?? string.Empty);
+                    Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
                     File.WriteAllText(FilePath, "[]");
                     return new List<TaskItem>();
                 }

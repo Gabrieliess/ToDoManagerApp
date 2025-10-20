@@ -111,12 +111,13 @@
             // 
             // TasklistView
             // 
+            TasklistView.BackColor = Color.FromArgb(20, 7, 28);
             TasklistView.Columns.AddRange(new ColumnHeader[] { TitleColumn, DueDateColumn, NoteColumn, PriorityColumn });
             TasklistView.Dock = DockStyle.Bottom;
             TasklistView.Font = new Font("DejaVu Sans Mono", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
             TasklistView.ForeColor = SystemColors.Window;
             TasklistView.FullRowSelect = true;
-            TasklistView.GridLines = true;
+            TasklistView.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             TasklistView.Location = new Point(170, 78);
             TasklistView.Margin = new Padding(0);
             TasklistView.Name = "TasklistView";
