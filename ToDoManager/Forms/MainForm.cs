@@ -22,7 +22,7 @@ namespace ToDoManager
 
     public partial class MainForm : Form
     {
-        private bool dateFormatWord = true; // true = "5th of May 2048", false = "5/5/2048"
+        private bool _dateFormatWord = true; // true = "5th of May 2048", false = "5/5/2048"
 
         public MainForm()
         {
@@ -32,6 +32,9 @@ namespace ToDoManager
         private void MainForm_Load(object sender, EventArgs e)
         {
             Datelabel.Text = ConstructDate();
+
+            TasklistView.Items.Clear();
+
             foreach (var task in TaskStorage.LoadTasks())
             {
                 ListViewItem item = new ListViewItem(task.Title);
@@ -44,20 +47,15 @@ namespace ToDoManager
 
         private string ConstructDate()
         {
-            if (!dateFormatWord)
-            {
-                return $@"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}";
-            }
-            else
-            {
-                return $@"{DateTime.Now.Day}th of {((Months)DateTime.Now.Month - 1).ToString()} {DateTime.Now.Year}";
-            }
+            return !_dateFormatWord
+                ? $@"{DateTime.Now.Day}/{DateTime.Now.Month}/{DateTime.Now.Year}"
+                : $@"{DateTime.Now.Day}th of {((Months)DateTime.Now.Month - 1).ToString()} {DateTime.Now.Year}";
         }
 
 
         private void DateLabel_Click(object sender, EventArgs e)
         {
-            dateFormatWord = !dateFormatWord;
+            _dateFormatWord = !_dateFormatWord;
             Datelabel.Text = ConstructDate();
         }
 
@@ -79,9 +77,11 @@ namespace ToDoManager
 
         private void NewTaskBtn_Click(object sender, EventArgs e)
         {
-            using (TaskForm taskForm = new TaskForm())
+            using var taskForm = new TaskForm();
+            var result = taskForm.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                taskForm.ShowDialog();
+                MainForm_Load(null,null);
             }
         }
     }

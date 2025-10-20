@@ -100,7 +100,9 @@ namespace ToDoManager.Forms
                 IsDone = false,
                 Note = NoteTextBox.Text
             };
+            
             TaskStorage.SaveTask(taskItem);
+            DialogResult = DialogResult.OK;
             Close();
         }
     }
