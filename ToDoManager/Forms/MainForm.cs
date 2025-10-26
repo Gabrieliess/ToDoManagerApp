@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Linq.Expressions;
 using ToDoManager.Forms;
 using ToDoManager.Services;
 
@@ -23,6 +25,7 @@ namespace ToDoManager
     public partial class MainForm : Form
     {
         private bool _dateFormatWord = true; // true = "5th of May 2048", false = "5/5/2048"
+        private int _selectedTaskId = 0; // used to track selected task for deleting, value 0 > none selected
 
         public MainForm()
         {
@@ -37,7 +40,8 @@ namespace ToDoManager
 
             foreach (var task in TaskStorage.LoadTasks())
             {
-                ListViewItem item = new ListViewItem(task.Title);
+                ListViewItem item = new ListViewItem(task.Id.ToString());
+                item.SubItems.Add(task.Title);
                 item.SubItems.Add(task.DueDate.ToString());
                 item.SubItems.Add(task.Note);
                 item.SubItems.Add(task.Priority);
@@ -81,7 +85,38 @@ namespace ToDoManager
             var result = taskForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                MainForm_Load(null,null);
+                MainForm_Load(null, null);
+            }
+        }
+
+        private void TasklistView_Click(object sender, EventArgs e)
+        {
+            _selectedTaskId = int.Parse(TasklistView.SelectedItems[0].SubItems[0].Text);
+        }
+
+        private void RemoveTaskBtn_Click(object sender, EventArgs e)
+        {
+            if (_selectedTaskId != 0)
+            {
+                var result = MessageBox.Show(
+                    @$"Do you really want to remove selected task (ID: {_selectedTaskId})?",
+                    @"Nuke the task",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Question);
+
+                switch (result)
+                {
+                    case DialogResult.OK:
+                        break;
+                    case DialogResult.No:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+            else
+            {
+                MessageBox.Show(@"Select task you want to delete first.");
             }
         }
     }

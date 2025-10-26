@@ -86,6 +86,7 @@ namespace ToDoManager.Forms
 
             TaskItem taskItem = new TaskItem
             {
+                Id = new Random().Next(10000, 99999),
                 Title = TitleTextBox.Text,
                 DueDate = DateOnly.Parse(DateTextBox.Text.Replace('.', '/')), // 12/4/2015
                 Priority = PriorityTrackBar.Value switch
@@ -99,7 +100,6 @@ namespace ToDoManager.Forms
                 },
                 IsDone = false,
                 Note = NoteTextBox.Text,
-                Id = new Random().Next(10000, 99999)
             };
 
             TaskStorage.SaveTask(taskItem);
