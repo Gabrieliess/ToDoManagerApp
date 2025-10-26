@@ -98,9 +98,10 @@ namespace ToDoManager.Forms
                     _ => "Undefined",
                 },
                 IsDone = false,
-                Note = NoteTextBox.Text
+                Note = NoteTextBox.Text,
+                Id = new Random().Next(10000, 99999)
             };
-            
+
             TaskStorage.SaveTask(taskItem);
             DialogResult = DialogResult.OK;
             Close();
