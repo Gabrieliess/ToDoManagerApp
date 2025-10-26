@@ -34,6 +34,7 @@
             RemoveTaskBtn = new Button();
             NewTaskBtn = new Button();
             TasklistView = new ListView();
+            IdColumn = new ColumnHeader();
             TitleColumn = new ColumnHeader();
             DueDateColumn = new ColumnHeader();
             NoteColumn = new ColumnHeader();
@@ -89,6 +90,7 @@
             RemoveTaskBtn.TabIndex = 1;
             RemoveTaskBtn.Text = "Remove Task";
             RemoveTaskBtn.UseVisualStyleBackColor = true;
+            RemoveTaskBtn.Click += RemoveTaskBtn_Click;
             RemoveTaskBtn.MouseEnter += MenuButton_MouseEnter;
             RemoveTaskBtn.MouseLeave += MenuButton_MouseLeave;
             // 
@@ -111,9 +113,10 @@
             // 
             // TasklistView
             // 
+            TasklistView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TasklistView.BackColor = Color.FromArgb(20, 7, 28);
-            TasklistView.Columns.AddRange(new ColumnHeader[] { TitleColumn, DueDateColumn, NoteColumn, PriorityColumn });
-            TasklistView.Dock = DockStyle.Bottom;
+            TasklistView.BorderStyle = BorderStyle.None;
+            TasklistView.Columns.AddRange(new ColumnHeader[] { IdColumn, TitleColumn, DueDateColumn, NoteColumn, PriorityColumn });
             TasklistView.Font = new Font("DejaVu Sans Mono", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 238);
             TasklistView.ForeColor = SystemColors.Window;
             TasklistView.FullRowSelect = true;
@@ -121,30 +124,36 @@
             TasklistView.Location = new Point(170, 78);
             TasklistView.Margin = new Padding(0);
             TasklistView.Name = "TasklistView";
-            TasklistView.Size = new Size(892, 595);
+            TasklistView.Size = new Size(892, 591);
             TasklistView.TabIndex = 2;
             TasklistView.UseCompatibleStateImageBehavior = false;
             TasklistView.View = View.Details;
+            TasklistView.Click += TasklistView_Click;
+            // 
+            // IdColumn
+            // 
+            IdColumn.Text = "ID";
+            IdColumn.Width = 50;
             // 
             // TitleColumn
             // 
             TitleColumn.Text = "Title";
-            TitleColumn.Width = 180;
+            TitleColumn.Width = 120;
             // 
             // DueDateColumn
             // 
             DueDateColumn.Text = "Due Date";
-            DueDateColumn.Width = 120;
+            DueDateColumn.Width = 110;
             // 
             // NoteColumn
             // 
             NoteColumn.Text = "Note";
-            NoteColumn.Width = 500;
+            NoteColumn.Width = 512;
             // 
             // PriorityColumn
             // 
             PriorityColumn.Text = "Priority";
-            PriorityColumn.Width = 92;
+            PriorityColumn.Width = 100;
             // 
             // MainForm
             // 
@@ -156,10 +165,13 @@
             Controls.Add(MenuPanel);
             Controls.Add(HeadingPanel);
             Font = new Font("DejaVu Sans Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            ForeColor = SystemColors.ControlText;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(7, 5, 7, 5);
+            MaximumSize = new Size(1080, 720);
             MinimumSize = new Size(1080, 720);
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "My Task Manager";
             Load += MainForm_Load;
             HeadingPanel.ResumeLayout(false);
             HeadingPanel.PerformLayout();
@@ -175,6 +187,7 @@
         private Button NewTaskBtn;
         private Button RemoveTaskBtn;
         private ListView TasklistView;
+        private ColumnHeader IdColumn;
         private ColumnHeader TitleColumn;
         private ColumnHeader DueDateColumn;
         private ColumnHeader NoteColumn;
