@@ -134,9 +134,10 @@ namespace ToDoManager.Forms
                         MainForm_Load(null, null);
                         break;
                     case DialogResult.No:
+                        MessageBox.Show(@"okay nigger");
                         break;
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        break;
                 }
             }
             else
