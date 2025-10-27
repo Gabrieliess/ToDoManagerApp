@@ -1,4 +1,4 @@
-﻿namespace ToDoManager
+﻿namespace ToDoManager.Forms
 {
     partial class MainForm
     {

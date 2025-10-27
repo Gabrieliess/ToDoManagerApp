@@ -1,9 +1,6 @@
-using System.Diagnostics;
-using System.Linq.Expressions;
-using ToDoManager.Forms;
 using ToDoManager.Services;
 
-namespace ToDoManager
+namespace ToDoManager.Forms
 {
     enum Months
     {
