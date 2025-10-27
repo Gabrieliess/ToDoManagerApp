@@ -24,10 +24,10 @@ namespace ToDoManager.Services
                 var tasks = LoadTasks();
                 tasks.Add(newTask);
 
-                string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions
-                {
-                    WriteIndented = true
-                });
+                string json = JsonSerializer.Serialize(
+                    tasks,
+                    new JsonSerializerOptions { WriteIndented = true }
+                );
 
                 File.WriteAllText(FilePath, json);
             }
