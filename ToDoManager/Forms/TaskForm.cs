@@ -8,6 +8,8 @@ namespace ToDoManager.Forms
         public TaskForm()
         {
             InitializeComponent();
+            TitleTextBox.BackColor = AppColors.MenuButtonHover;
+            DateTextBox.BackColor = AppColors.MenuButtonHover;
         }
 
         private void TaskForm_Load(object sender, EventArgs e)

@@ -138,7 +138,7 @@
             // TitleColumn
             // 
             TitleColumn.Text = "Title";
-            TitleColumn.Width = 120;
+            TitleColumn.Width = 160;
             // 
             // DueDateColumn
             // 
@@ -148,7 +148,7 @@
             // NoteColumn
             // 
             NoteColumn.Text = "Note";
-            NoteColumn.Width = 512;
+            NoteColumn.Width = 440;
             // 
             // PriorityColumn
             // 

@@ -19,7 +19,7 @@ namespace ToDoManager.Services
         {
             try
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
+                Directory.CreateDirectory(Path.GetDirectoryName(FilePath) ?? string.Empty);
 
                 var tasks = LoadTasks();
                 tasks.Add(newTask);
@@ -33,7 +33,7 @@ namespace ToDoManager.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Chyba pri ukladaní: {ex.Message}");
+                MessageBox.Show(@$"Chyba pri ukladaní: {ex.Message}");
             }
         }
 
@@ -43,7 +43,7 @@ namespace ToDoManager.Services
             {
                 if (!File.Exists(FilePath))
                 {
-                    Directory.CreateDirectory(Path.GetDirectoryName(FilePath));
+                    Directory.CreateDirectory(Path.GetDirectoryName(FilePath) ?? string.Empty);
                     File.WriteAllText(FilePath, "[]");
                     return new List<TaskItem>();
                 }

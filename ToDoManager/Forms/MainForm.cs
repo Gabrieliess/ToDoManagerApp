@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using ToDoManager.Services;
 
 namespace ToDoManager.Forms
@@ -39,7 +40,7 @@ namespace ToDoManager.Forms
             {
                 ListViewItem item = new ListViewItem(task.Id.ToString());
                 item.SubItems.Add(task.Title);
-                item.SubItems.Add(task.DueDate.ToString());
+                item.SubItems.Add(editDate(task.DueDate.ToString()));
                 item.SubItems.Add(task.Note);
                 item.SubItems.Add(task.Priority);
                 TasklistView.Items.Add(item);
@@ -53,6 +54,30 @@ namespace ToDoManager.Forms
                 : $@"{DateTime.Now.Day}th of {((Months)DateTime.Now.Month - 1).ToString()} {DateTime.Now.Year}";
         }
 
+        private string editDate(string date)
+        {
+            string dateString = "";
+            foreach (var value in date.Split('.'))
+            {
+                value.Trim();
+
+                if (value.Length < 2)
+                {
+                    dateString += "0" + value + ".";
+                }
+
+                else if (value.Length < 4)
+                {
+                    dateString += value + ".";
+                }
+                else
+                {
+                    dateString += value;
+                }
+            }
+
+            return dateString;
+        }
 
         private void DateLabel_Click(object sender, EventArgs e)
         {
