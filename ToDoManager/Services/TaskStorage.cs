@@ -57,5 +57,23 @@ namespace ToDoManager.Services
                 return new List<TaskItem>();
             }
         }
+
+        public static void DeleteTask(int taskId)
+        {
+            try
+            {
+                var tasks = LoadTasks();
+                tasks.RemoveAll(t => t.Id == taskId);
+                string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                });
+                File.WriteAllText(FilePath, json);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@$"Could not delete selected task ({taskId}): {ex.Message}");
+            }
+        }
     }
 }

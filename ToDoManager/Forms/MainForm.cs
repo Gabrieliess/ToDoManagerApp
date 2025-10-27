@@ -29,7 +29,7 @@ namespace ToDoManager.Forms
             InitializeComponent();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object? sender, EventArgs e)
         {
             Datelabel.Text = ConstructDate();
 
@@ -96,14 +96,17 @@ namespace ToDoManager.Forms
             if (_selectedTaskId != 0)
             {
                 var result = MessageBox.Show(
-                    @$"Do you really want to remove selected task (ID: {_selectedTaskId})?",
-                    @"Nuke the task",
+                    @$"Do you really want to nuke the selected task (ID: {_selectedTaskId})?",
+                    @"Final decision",
                     MessageBoxButtons.YesNoCancel,
                     MessageBoxIcon.Question);
 
                 switch (result)
                 {
-                    case DialogResult.OK:
+                    case DialogResult.Yes:
+                        MessageBox.Show(@"alah akbar");
+                        TaskStorage.DeleteTask(_selectedTaskId);
+                        MainForm_Load(null, null);
                         break;
                     case DialogResult.No:
                         break;
