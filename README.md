@@ -8,4 +8,4 @@ Simple To-Do list/manager app based on WinForms .NET9 core
 - deleting Tasks if not needed anymore
 - thats all (what more did you expected)
 
->This project was created for learning purpouses mainly, don't expect much we all started somewhere
+>This project was created for learning purpouses mainly, a lot of bugs and loose ends
